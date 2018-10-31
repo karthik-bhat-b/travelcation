@@ -1,0 +1,96 @@
+<html>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script> 
+    <head>
+        <% include ../partial/adminheader %>
+        <h1>Add new package</h1>
+        <div class="container-fluid">
+        
+                                <form action="/controllers/add-package" method="POST" role="form">
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                           name
+                                            </span>
+                                            <input type="text" name="pname" class="form-control" placeholder="package name" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                           price
+                                            </span>
+                                            <input type="text" name="price" class="form-control" placeholder="price" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                            <div class="input-group">
+                                                <span class="input-group-addon">
+                                               Season
+                                                </span>
+                                                
+                                                <select name="season">
+                                                        <option value="winter">Winter</option>
+                                                        <option value="summer">Summer</option>
+                                                        <option value="spring">spring</option>
+                                                        <option value="autumn">autumn</option>
+                                                </select>
+                                        
+                                        </div>
+                                        </div>
+                                        <div class="form-group">
+                                                <div class="input-group">
+                
+                                                    <span class="input-group-addon">
+                                                    is active?
+                                                    </span>
+                                                    <input type="radio" name="isactive" value=1>YES <input type="radio" name="isactive" value=0>NO
+                                                </div>
+                                            </div>
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                           Description
+                                            </span>
+                                            <input type="text" name="s_desc" class="form-control" placeholder="small Description" />
+                                        </div>
+                                    </div>
+                                  
+                                    <div class="form-group">
+                                            <div class="input-group">
+                                                <span class="input-group-addon">
+                                               file
+                                                </span>
+                                                <input type="text" name="l_desc" class="form-control" placeholder="file url" />
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                   image
+                                                    </span>
+                                                    <input type="text" name="image" class="form-control" placeholder="file url" />
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon">
+                                                       video
+                                                        </span>
+                                                        <input type="text" name="video" class="form-control" placeholder="file url" />
+                                                    </div>
+                                                </div>
+
+                                    <button type="submit" class="btn btn-success btn-lg">Add</button>
+                                    </div>
+                
+                                </form>
+                            </div>
+                       
+        
+    </head>
+
+</html>

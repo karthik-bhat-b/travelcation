@@ -1,0 +1,20 @@
+<html>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script> 
+    <head>
+            <% include ../partial/adminheader %>
+        <h1>USERS</h1>
+        <table>
+            <th>name</th>
+        <%for(var i=0;i<user.length;i++){%>
+          <tr>  <%=user[i].name%></tr>
+          <%}%>
+        </table>
+        
+
+        </div>
+    </head>
+    </html>
