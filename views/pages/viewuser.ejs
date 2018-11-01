@@ -5,16 +5,48 @@
     <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script> 
     <head>
+            <style>
+                    table {
+                        font-family: arial, sans-serif;
+                        border-collapse: collapse;
+                        width: 100%;
+                    }
+                    
+                    td, th {
+                        border: 1px solid #dddddd;
+                        text-align: left;
+                        padding: 8px;
+                    }
+                    
+                    tr:nth-child(even) {
+                        background-color: #dddddd;
+                    }
+                    </style>
+    </head> 
+    <body>   
             <% include ../partial/adminheader %>
         <h1>USERS</h1>
+        <div class="container">
         <table>
-            <th>name</th>
-        <%for(var i=0;i<user.length;i++){%>
-          <tr>  <%=user[i].name%></tr>
-          <%}%>
-        </table>
-        
+            <thead>
+                    <tr>
+                            <th>Name</th>
+                            <th>Phone No</th>
+                            <th>email</th>
+                    </tr>
 
+            </thead>
+         <tbody>
+                <%for(var i=0;i<user.length;i++){%>
+                        <tr>
+                                <td><%=user[i].name%></td>
+                                <td><%=user[i].ph_no%>Doe</td>
+                                <td><%=user[i].email%></td>
+                              </tr>
+                        <%}%>
+         </tbody>  
+        
+        </table>
         </div>
-    </head>
+    </body>
     </html>
