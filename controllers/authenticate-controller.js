@@ -11,15 +11,16 @@ module.exports.authenticate=function(req,res){
           res.json({
             status:false,
             message:'there are some error with query'
-            })
+            });
       }else{
        
         if(results.length >0){
-          if(results[0].isadmin==1){
-            res.redirect('/admin');
-          }else{
+          
   decryptedString = cryptr.decrypt(results[0].password);
             if(password==decryptedString){
+              if(results[0].isadmin==1){
+                res.redirect('/admin');
+              }
                  req.session.name=results[0].name;
                 res.redirect('/main');
             }else{
@@ -28,7 +29,7 @@ module.exports.authenticate=function(req,res){
                   message:"Email and password does not match"
                  });
             }
-          }
+          
         }
         else{
           res.json({

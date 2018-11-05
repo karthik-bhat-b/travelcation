@@ -7,6 +7,7 @@ var app = express();
 var authenticateController=require('./controllers/authenticate-controller');
 var registerController=require('./controllers/register-controller');
 var insertPackage=require('./controllers/add-package');
+var adduser=require('./controllers/adduser')
 
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
@@ -40,10 +41,31 @@ app.get('/packageinsert', function(req, res) {
     res.render('pages/packageinsert');
 });
 //
-app.get('/main', function(req, res) {
-    
-    res.render('pages/main',{user:req.session.name});
+app.get('/main', function(req, res) {  
+    connection.query("SELECT * from packages",function(error,rows,fields){
+        if(error){
+
+        }
+        else{
+            res.render('pages/main',{user:req.session.name,rows});
+        }
+    })  
+
 });
+app.get('/packdetails', function(req, res) {
+
+    
+    res.render('pages/packdetails');
+});
+
+//for adding new user through admin account
+app.get('/adduser', function(req, res) {
+
+    
+    res.render('pages/adduser');
+});
+
+
 //
 app.get('/logout', function(req, res) {
     if (req.session.name) {
@@ -75,6 +97,9 @@ app.post('/controllers/authenticate-controller', authenticateController.authenti
 
 app.post('/api/insert',insertPackage.insert);
 app.post('/controllers/add-package',insertPackage.insert);
+
+app.post('/api/adduser',adduser.useradd);
+app.post('/controllers/adduser',adduser.useradd)
 
 app.listen(8080);
 console.log('8080 is the magic port');
