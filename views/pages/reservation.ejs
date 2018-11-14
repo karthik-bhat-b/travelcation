@@ -1,0 +1,38 @@
+<html>
+    <head>
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+            <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script> 
+    </head>
+    <body>
+            <% include ../partial/header %>
+            <h1>CONFIRM YOUR BOOKING</h1>
+            <div>
+                
+                <form name="registration_form" id='registration_form' class="form-inline">
+                        <div class="row" style="padding: 5%">
+                            <%for(var i=0;i<n;i++){%>
+                                Enter passenger #<%=i+1%> details:<br>
+                            <div class="form-group col-xs-6">
+                                    <label for="firstname" class="sr-only"></label>
+                                    <input id="firstname" class="form-control input-group-lg reg_name" type="text" name="firstname"
+                                           title="Enter first name"
+                                           placeholder="First name"/>
+                                
+                                <label for="age" class="sr-only"></label>
+                                <input id="age" class="form-control input-group-lg reg_name" type="number" name="age"
+                                       title="Enter last the Age"
+                                       placeholder="Age"/> 
+                                       <input type="radio" class="form-control input-group-lg reg_name" name="gender" value="male">Male <input type="radio" name="gender" value="female">Female           
+                           
+                        
+                    </div>
+                     <%}%>   
+                    <button type="submit" class="btn btn-lg color-box-waanbii">Continue Booking</button>    
+                </form>
+
+            </div>
+    </body>
+</html>

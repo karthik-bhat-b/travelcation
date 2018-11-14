@@ -100,40 +100,39 @@
                         <aside class="col-sm-4">
                 <article class="gallery-wrap"> 
                 <div class="img-big-wrap">
-                  <div> <a href="#"><img src="https://via.placeholder.com/450x450"></a></div>
+                  <div> <a href="#"><img src="<%=rows[0].images%>"></a></div>
                 </div>
-                <div class="img-small-wrap">
+                <!-- <div class="img-small-wrap">
                   <div class="item-gallery"> <img src="https://via.placeholder.com/100x100"> </div>
                 <div class="item-gallery"> <img src="https://via.placeholder.com/100x100"> </div>
                 <div class="item-gallery"> <img src="https://via.placeholder.com/100x100"> </div>
                 <div class="item-gallery"> <img src="https://via.placeholder.com/100x100"> </div>
-                </div>
+                </div> -->
                 </article>
                         </aside>
                         <aside class="col-sm-5">
-                <article class="card-body m-0 pt-0 pl-5">
-                    <h3 class="title text-uppercase">Andaman package</h3>
+                <article class="card-body m-0 pt-0 pl-5"  style="padding: 5%;">
+                    <h3 class="title text-uppercase"><%=rows[0].p_name%></h3>
                
                                     
                 <div class="mb-3 mt-3"> 
                     <span class="price-title">Price :</span>
-                        <span class="price color-price-waanbii">15000<sup>rs</sup></span>
+                        <span class="price color-price-waanbii"><%=rows[0].price%><sup>rs</sup></span>
                 </div>
                 <dl class="item-property">
                   <dt>Description</dt>
-                  <dd><p>description jhjkjcslvlv sgwgwgsdgdsgsdgdssdsdvds
-                      ssdsdgssdsdgsgsgsegsgsdg dfsgsg
-                    sdsdfsfesf </p></dd>
+                  <dd><p><%=rows[0].s_desc%> </p></dd>
                 </dl>
                 
                 </article>
                         </aside>
                         <aside class="col-sm-3">
+                                <form action = "/controllers/reserve" method="POST">
                                 <div class="row">
                             <dl class="param param-inline">
-                              <dt>Quantity: </dt>
+                              <dt>Number of people: </dt>
                               <dd>
-                                  <select class="form-control form-control-sm" style="width:70px;">
+                                  <select class="form-control form-control-sm" style="width:70px;" name="count">
                                       <option> 1 </option>
                                       <option> 2 </option>
                                       <option> 3 </option>
@@ -143,17 +142,19 @@
                                       <option> 7 </option>
                                       <option> 8 </option>
                                       <option> 9 </option>
-                                      <option> 10 </option>
                                   </select>
                               </dd>
                             </dl>
                     </div>
                         <div class="row ">
-                    <button class="btn btn-lg color-box-waanbii" type="button"> <i class="fa fa-shopping-cart"></i> Add to cart </button>
+                    <button class="btn btn-lg color-box-waanbii" type="submit"> <i class="fa fa-shopping-cart"></i> book now </button>
                     </div>
-                            <div class="row mb-4 mt-4">
+                    </form>
+                   <br>
+                    <div class="row mb-4 mt-4">
                     <button class="btn btn-lg color-box-waanbii" type="button"> <i class="fa fa-credit-card"></i> contact us for more details</button>
                     </div>
+                    </aside>
                     
                 <hr class="m-0 p-0">
                 </div>

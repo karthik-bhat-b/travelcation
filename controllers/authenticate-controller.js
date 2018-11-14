@@ -18,11 +18,12 @@ module.exports.authenticate=function(req,res){
           
   decryptedString = cryptr.decrypt(results[0].password);
             if(password==decryptedString){
-              if(results[0].isadmin==1){
+              if(results[0].isadmin== 1){
                 res.redirect('/admin');
-              }
+              }else{
                  req.session.name=results[0].name;
                 res.redirect('/main');
+              }
             }else{
                 res.json({
                   status:false,

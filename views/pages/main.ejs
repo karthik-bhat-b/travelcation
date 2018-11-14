@@ -16,6 +16,12 @@
           }
         </style>
         </head>
+        <script>
+            function saveid(id1){
+              
+              alert("saved "+id1);
+            }
+        </script>
    <body>
         <% include ../partial/header %>
         <!-- <div class="container-fluid">
@@ -66,23 +72,27 @@
                         </div>
                       </div>
                       <br>
-                  </div>    
+                  </div> 
+              
         <div class="row">
           <% for(var i=0;i<rows.length;i++){%>
                 <div id="packages" class="col-md-4 col-sm-6 fh5co-tours animate-box" data-animate-effect="fadeIn">
-                    <div href="#"><img src="<%=rows[i].images %>" alt="Free HTML5 Website Template by FreeHTML5.co" class="img-responsive">
+                    <div href="#"><img src="<%=rows[i].images %>" class="img-responsive">
                         <div class="desc">
                             <span></span>
                             <h3><%= rows[i].p_name%></h3>
-                            <span><%=rows[i].duration %></span>
+                            <span><%=rows[i].duration %></span><br>Price:
                             <span class="price"><%=rows[i].price %></span>
-                            <a class="btn btn-primary btn-outline" href="#" value=<%rows[i].p_id%></a>>Book Now <i class="icon-arrow-right22"></i></a>
+                            <form action="/controllers/pview" method="POST">
+                              <button type="submit" class="btn btn-primary btn-outline" name="view"  value="<%=rows[i].p_id %>" >Book Now <i class="icon-arrow-right22"></i></button>
+                            </form>
+                            
                         </div>
                     </div>
                 </div>
                <%}%>
     </div>
-        
+  
    </body>
 
 </html>

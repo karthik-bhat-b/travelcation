@@ -27,7 +27,7 @@ module.exports.register=function(req,res){
         })
       }else{
         
-          res.render('pages/main',{user:users.name});
+          res.redirect('/main');
       }
     });
 }

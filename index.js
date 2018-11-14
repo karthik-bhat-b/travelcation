@@ -7,7 +7,9 @@ var app = express();
 var authenticateController=require('./controllers/authenticate-controller');
 var registerController=require('./controllers/register-controller');
 var insertPackage=require('./controllers/add-package');
-var adduser=require('./controllers/adduser')
+var adduser=require('./controllers/adduser');
+var pview = require('./controllers/pview');
+var reserve= require('./controllers/reserve');
 
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
@@ -53,9 +55,20 @@ app.get('/main', function(req, res) {
 
 });
 app.get('/packdetails', function(req, res) {
-
+    pid=Number(req.session.pid);
+    // res.json({
+    //     status:false,
+    //     message:"Email and password does not match  "+req.session.pid
+    //    });
+connection.query("SELECT * FROM packages WHERE p_id = ?",[pid],function(err,rows,fields){
+    if(err){
+              res.render('pages/reg');
+    }else{
+        res.render('pages/packdetails',{rows:rows});
+    }
+})
     
-    res.render('pages/packdetails');
+  
 });
 
 //for adding new user through admin account
@@ -64,7 +77,9 @@ app.get('/adduser', function(req, res) {
     
     res.render('pages/adduser');
 });
-
+app.get('/reservation', function(req, res) {
+    res.render('pages/reservation',{n:req.session.n});
+});
 
 //
 app.get('/logout', function(req, res) {
@@ -99,7 +114,13 @@ app.post('/api/insert',insertPackage.insert);
 app.post('/controllers/add-package',insertPackage.insert);
 
 app.post('/api/adduser',adduser.useradd);
-app.post('/controllers/adduser',adduser.useradd)
+app.post('/controllers/adduser',adduser.useradd);
+
+app.post('/api/pview',pview.viewthat);
+app.post('/controllers/pview',pview.viewthat);
+
+app.post('/api/reserve',reserve.continue);
+app.post('/controllers/reserve',reserve.continue);
 
 app.listen(8080);
 console.log('8080 is the magic port');
