@@ -15,7 +15,9 @@
     cursor: zoom-in;
 }
 
-
+.body{
+    background: url(file:///home/karthik/Pictures/sanchari.jpeg)
+}
 .gallery-wrap .img-small-wrap .item-gallery {
     width: 70px;
     height: auto;
@@ -93,6 +95,8 @@
     </head>
     <body>
             <% include ../partial/header %>
+
+            <br>
             <div class="container">
                     <br>
                 <div class="card border-0">
@@ -102,12 +106,7 @@
                 <div class="img-big-wrap">
                   <div> <a href="#"><img src="<%=rows[0].images%>"></a></div>
                 </div>
-                <!-- <div class="img-small-wrap">
-                  <div class="item-gallery"> <img src="https://via.placeholder.com/100x100"> </div>
-                <div class="item-gallery"> <img src="https://via.placeholder.com/100x100"> </div>
-                <div class="item-gallery"> <img src="https://via.placeholder.com/100x100"> </div>
-                <div class="item-gallery"> <img src="https://via.placeholder.com/100x100"> </div>
-                </div> -->
+                
                 </article>
                         </aside>
                         <aside class="col-sm-5">
@@ -147,12 +146,12 @@
                             </dl>
                     </div>
                         <div class="row ">
-                    <button class="btn btn-lg color-box-waanbii" type="submit"> <i class="fa fa-shopping-cart"></i> book now </button>
+                    <button class="btn btn-lg color-box-waanbii" type="submit"> <i class="fa fa-shopping-cart"></i> Proceed to Checkout </button>
                     </div>
                     </form>
                    <br>
                     <div class="row mb-4 mt-4">
-                    <button class="btn btn-lg color-box-waanbii" type="button"> <i class="fa fa-credit-card"></i> contact us for more details</button>
+                    <button class="btn btn-lg color-box-waanbii" type="button"> <i class="fa fa-credit-earphone"></i> contact us for more details</button>
                     </div>
                     </aside>
                     

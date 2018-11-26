@@ -10,6 +10,7 @@ var insertPackage=require('./controllers/add-package');
 var adduser=require('./controllers/adduser');
 var pview = require('./controllers/pview');
 var reserve= require('./controllers/reserve');
+var addp= require('./controllers/insert-passenger');
 
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
@@ -78,9 +79,24 @@ app.get('/adduser', function(req, res) {
     res.render('pages/adduser');
 });
 app.get('/reservation', function(req, res) {
-    res.render('pages/reservation',{n:req.session.n});
+    res.render('pages/reservation',{n:req.session.n,k:0});
 });
 
+
+app.get('/payment', function(req, res) {
+    pid=Number(req.session.pid);
+    n=req.session.n;
+    connection.query("SELECT * FROM packages WHERE p_id = ?",[pid],function(err,rows,fields){
+        if(err){
+                  res.render('pages/reg');
+        }else{
+            tprice=n*Number(rows[0].price);
+            price=rows[0].price;
+            res.render('pages/payment',{n:n,tprice:tprice,name:rows[0].p_name});
+        }
+    })
+    
+});
 //
 app.get('/logout', function(req, res) {
     if (req.session.name) {
@@ -106,8 +122,9 @@ app.get('/viewuser', function(req, res) {
 });
 
 app.post('/api/register',registerController.register);
-app.post('/api/authenticate',authenticateController.authenticate);
 app.post('/controllers/register-controller', registerController.register);
+
+app.post('/api/authenticate',authenticateController.authenticate);
 app.post('/controllers/authenticate-controller', authenticateController.authenticate);
 
 app.post('/api/insert',insertPackage.insert);
@@ -121,6 +138,10 @@ app.post('/controllers/pview',pview.viewthat);
 
 app.post('/api/reserve',reserve.continue);
 app.post('/controllers/reserve',reserve.continue);
+
+
+app.post('/api/addpassengers',addp.addpassengers);
+app.post('/controllers/insert-passenger',addp.addpassengers);
 
 app.listen(8080);
 console.log('8080 is the magic port');

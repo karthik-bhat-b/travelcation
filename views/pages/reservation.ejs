@@ -5,33 +5,54 @@
             <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
             <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
             <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script> 
-    </head>
+            <script>
+                    function varify(e){
+                    var number = document.getElementById("Age");
+                    if(!(number>0)){
+                        return false;
+                    }
+                    }
+            </script>
+            <style>
+                .color-box{
+                               background: #FD6342; 
+                                color:white;
+                            }
+            </style>
+        </head>
     <body>
             <% include ../partial/header %>
             <h1>CONFIRM YOUR BOOKING</h1>
             <div>
-                
-                <form name="registration_form" id='registration_form' class="form-inline">
+                <hr>
                         <div class="row" style="padding: 5%">
-                            <%for(var i=0;i<n;i++){%>
-                                Enter passenger #<%=i+1%> details:<br>
+                            <%for(var i=k;i<n+1;i++){%>
+                                    <form action="/controllers/insert-passenger" method="POST" class="form-inline" role="form">
+
+                               Enter passenger #<%=i%> details:<br>
                             <div class="form-group col-xs-6">
                                     <label for="firstname" class="sr-only"></label>
-                                    <input id="firstname" class="form-control input-group-lg reg_name" type="text" name="firstname"
-                                           title="Enter first name"
-                                           placeholder="First name"/>
+                                    <input id="firstname" class="form-control input-group-lg reg_name" type="text" name="name"
+                                           title="Enter name"
+                                           placeholder=" name"/>
                                 
                                 <label for="age" class="sr-only"></label>
-                                <input id="age" class="form-control input-group-lg reg_name" type="number" name="age"
-                                       title="Enter last the Age"
+                                <input id="age" class="form-control input-group-lg reg_name" type="number" name="age" id="Age"
+                                       title="Enter the Age"
                                        placeholder="Age"/> 
                                        <input type="radio" class="form-control input-group-lg reg_name" name="gender" value="male">Male <input type="radio" name="gender" value="female">Female           
-                           
+                                       <input id="id" class="form-control input-group-lg reg_name" type="text" name="id"
+                                       title="Enter ADHAR number"
+                                       placeholder="ID <%=i%>"/>
+                                       <button type="submit" class="btn btn-lg color-box"><i class="fa fa-shopping-cart"></i>submit</button>    
+
                         
                     </div>
-                     <%}%>   
-                    <button type="submit" class="btn btn-lg color-box-waanbii">Continue Booking</button>    
+
                 </form>
+                     <%}%> <br>  
+                    <button type="submit" class="btn btn-lg color-box"><i class="fa fa-shopping-cart"></i>Generate your ticket</button>    
+                
 
             </div>
     </body>
